@@ -79,6 +79,21 @@
       font-size: 1rem;
       outline: none;
     }
+@media (max-width: 600px) {
+  .input-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 10px;
+    background: white;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+  }
+  .chat-container {
+    padding-bottom: 80px; /* height of input area + some margin */
+  }
+}
     #sendBtn {
       width: 48px;
       height: 48px;
@@ -296,6 +311,16 @@ if (SpeechRecognition) {
   micBtn.title = "Tu navegador no soporta reconocimiento de voz";
 }
 
+  </script>
+  <script>
+    // Scroll input into view on focus to handle mobile keyboard
+    const inputArea = document.querySelector('.input-area');
+
+    inputArea.querySelector('#mensaje').addEventListener('focus', () => {
+      setTimeout(() => {
+        inputArea.querySelector('#mensaje').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    });
   </script>
 </body>
 </html>
