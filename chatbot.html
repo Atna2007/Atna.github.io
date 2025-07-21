@@ -91,7 +91,7 @@
     z-index: 1000;
   }
   .chat-container {
-    padding-bottom: 80px; /* height of input area + some margin */
+    padding-bottom: 80px; 
   }
 }
     #sendBtn {
@@ -163,7 +163,7 @@
   <input type="text" id="mensaje" placeholder="Pregunta a Chequeándome" />
   
   <button id="micBtn" aria-label="Hablar" style="margin-left: 10px; background: #00B8FF; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-    <!-- Icono micrófono SVG -->
+    
     <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white">
       <path d="M12 14q-1.25 0-2.125-.875T9 11V5q0-1.25.875-2.125T12 2q1.25 0 2.125.875T15 5v6q0 1.25-.875 2.125T12 14Zm-1 7v-3.05q-2.875-.35-4.688-2.488Q4.5 13.325 4.5 10.5h2q0 2.35 1.575 3.925Q9.65 16 12 16t3.925-1.575Q17.5 12.35 17.5 10.5h2q0 2.825-1.812 4.962Q15.875 17.6 13 17.95V21Z"/>
     </svg>
@@ -238,11 +238,11 @@
       renderConversacion();
       mensajeInput.value = "";
 
-      // Loader
+      
       historialActual.push({ tipo: 'bot', texto: "..." });
       renderConversacion();
 
-      // Enviar al webhook con contexto
+      
       fetch("https://hook.us2.make.com/le5frbwcdqj4yumecvozhjkh89l25ql1", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -286,15 +286,13 @@ if (SpeechRecognition) {
 
   micBtn.addEventListener("click", () => {
     recognition.start();
-    micBtn.style.background = "#0077cc"; // cambia color al escuchar
+    micBtn.style.background = "#0077cc"; 
   });
 
   recognition.onresult = (event) => {
     const textoVoz = event.results[0][0].transcript;
     mensajeInput.value = textoVoz;
     micBtn.style.background = "#00B8FF";
-
-    // Puedes enviar automáticamente el mensaje aquí si quieres:
     enviar();
   };
 
@@ -313,7 +311,6 @@ if (SpeechRecognition) {
 
   </script>
   <script>
-    // Scroll input into view on focus to handle mobile keyboard
     const inputArea = document.querySelector('.input-area');
 
     inputArea.querySelector('#mensaje').addEventListener('focus', () => {
